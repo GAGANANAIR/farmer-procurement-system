@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>e-Krishi Kisaan — Procurement & Payment Tracking System | SIH26032</title>
+  <meta name="description" content="Farmer Procurement & Payment Status Tracking System for Smart India Hackathon SIH26032. Real-time tracking of produce procurement, quality inspection, weighing, and DBT payment status.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">🌾</div>
+    <div class="loader-title">e-Krishi Kisaan Portal</div>
+    <div class="loader-sub">Procurement &amp; Payment Tracking System &nbsp;•&nbsp; SIH26032</div>
+    <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+    <div class="loader-sub" style="margin-top:8px; font-size:0.75rem; opacity:.7;">Initialising — Ministry of Agriculture &amp; Farmers' Welfare</div>
+  </div>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeMobileSidebar()"></div>
+
+  <!-- App Root -->
+  <div id="app">
+
+    <!-- ======= SIDEBAR ======= -->
+    <aside id="sidebar" class="sidebar">
+      <!-- Built dynamically by app.js buildSidebar() -->
+    </aside>
+
+    <!-- ======= MAIN CONTENT ======= -->
+    <div class="main-content">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <button class="header-menu-btn" onclick="toggleMobileSidebar()" aria-label="Menu">☰</button>
+        <div class="header-breadcrumb">
+          <h2 id="header-breadcrumb-title">Farmer Dashboard</h2>
+          <span id="header-breadcrumb-sub">Farmer View</span>
+        </div>
+        <div class="header-actions">
+          <div class="govt-badge">🇮🇳 Govt. of India &nbsp;|&nbsp; PM-AASHA Scheme</div>
+          <span id="server-status" style="font-size:0.72rem; font-weight:600;"></span>
+          <button class="header-refresh-btn" onclick="renderPage(_currentPage)">↻ Refresh</button>
+          <button class="header-notif-btn" onclick="toggleNotifPanel()" title="Notifications">
+            🔔
+            <span id="notif-dot" class="notif-dot" style="display:none;"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Pages -->
+      <main class="page-content">
+
+        <!-- Dashboard Page -->
+        <div id="page-dashboard" class="page active">
+          <div class="empty-state"><div class="empty-icon">⏳</div><h3>Loading Dashboard…</h3></div>
+        </div>
+
+        <!-- Procurement Tracking Page -->
+        <div id="page-procurement-tracking" class="page">
+          <div class="empty-state"><div class="empty-icon">⏳</div><h3>Loading Procurement Tracker…</h3></div>
+        </div>
+
+        <!-- Payment Tracking Page -->
+        <div id="page-payment-tracking" class="page">
+          <div class="empty-state"><div class="empty-icon">⏳</div><h3>Loading Payment Dashboard…</h3></div>
+        </div>
+
+        <!-- History Page -->
+        <div id="page-history" class="page">
+          <div class="empty-state"><div class="empty-icon">⏳</div><h3>Loading History…</h3></div>
+        </div>
+
+        <!-- Notifications Page -->
+        <div id="page-notifications" class="page">
+          <div class="empty-state"><div class="empty-icon">⏳</div><h3>Loading Notifications…</h3></div>
+        </div>
+
+        <!-- Admin Page -->
+        <div id="page-admin" class="page">
+          <div class="empty-state"><div class="empty-icon">⏳</div><h3>Loading Admin Dashboard…</h3></div>
+        </div>
+
+      </main>
+
+    </div><!-- /.main-content -->
+
+  </div><!-- /#app -->
+
+  <!-- ======= NOTIFICATIONS SLIDE PANEL ======= -->
+  <div id="notif-panel" class="notif-panel">
+    <div class="notif-panel-header">
+      <h3>🔔 Notifications</h3>
+      <div class="notif-panel-actions">
+        <button class="btn btn-sm btn-secondary" onclick="markAllRead()">✓ All Read</button>
+        <button class="btn btn-sm btn-secondary" onclick="toggleNotifPanel()">✕</button>
+      </div>
+    </div>
+    <div class="notif-list" id="notif-list">
+      <!-- Populated by notifications.js -->
+    </div>
+  </div>
+
+  <!-- ======= TOAST CONTAINER ======= -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- =============================== -->
+  <!-- MODALS                          -->
+  <!-- =============================== -->
+
+  <!-- Modal: New Procurement Registration -->
+  <div id="modal-new-proc" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>➕ Register New Procurement</h3>
+        <div class="modal-close" onclick="closeModal('modal-new-proc')">✕</div>
+      </div>
+      <div class="modal-body" id="modal-new-proc-body">
+        <!-- Populated by procurement-tracker.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-new-proc')">Cancel</button>
+        <button class="btn btn-primary" id="btn-submit-proc" onclick="submitNewProcurement()">Submit Registration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Stage Update (Admin) -->
+  <div id="modal-stage-update" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>✏️ Update Procurement Stage</h3>
+        <div class="modal-close" onclick="closeModal('modal-stage-update')">✕</div>
+      </div>
+      <div class="modal-body" id="modal-stage-update-body">
+        <!-- Populated by admin-panel.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-stage-update')">Cancel</button>
+        <button class="btn btn-primary" id="btn-submit-stage" onclick="submitStageUpdate()">Save Update</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Payment Update (Admin) -->
+  <div id="modal-payment-update" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>💳 Update Payment Status</h3>
+        <div class="modal-close" onclick="closeModal('modal-payment-update')">✕</div>
+      </div>
+      <div class="modal-body" id="modal-payment-update-body">
+        <!-- Populated by admin-panel.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-payment-update')">Cancel</button>
+        <button class="btn btn-primary" id="btn-submit-payment" onclick="submitPaymentUpdate()">Update Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: SIH Info -->
+  <div id="modal-sih-info" class="modal-overlay">
+    <div class="modal" style="max-width:650px;">
+      <div class="modal-header">
+        <h3>ℹ️ About this Project — SIH26032</h3>
+        <div class="modal-close" onclick="closeModal('modal-sih-info')">✕</div>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success">🏆 Smart India Hackathon (SIH) — Problem Statement <strong>SIH26032</strong></div>
+        <div class="payment-detail-row"><span class="payment-detail-label">Problem Statement</span><span class="payment-detail-value text-sm">Procurement and Payment Status Tracking</span></div>
+        <div class="payment-detail-row"><span class="payment-detail-label">Ministry</span><span class="payment-detail-value text-sm">Ministry of Agriculture &amp; Farmers' Welfare</span></div>
+        <div class="payment-detail-row"><span class="payment-detail-label">Scheme</span><span class="payment-detail-value text-sm">PM-AASHA / MSP Price Support Scheme (PSS)</span></div>
+        <div class="payment-detail-row"><span class="payment-detail-label">Tech Stack</span><span class="payment-detail-value text-sm">Vanilla JS (ES6+), CSS3, HTML5, PowerShell REST API, JSON DB</span></div>
+        <div class="payment-detail-row"><span class="payment-detail-label">Database</span><span class="payment-detail-value text-sm">JSON file (server) + LocalStorage (offline mode)</span></div>
+        <div class="payment-detail-row"><span class="payment-detail-label">Backend</span><span class="payment-detail-value text-sm">PowerShell HttpListener REST API (run server.ps1)</span></div>
+        <div class="divider"></div>
+        <div style="font-size:0.85rem; color:var(--grey-700); line-height:1.7;">
+          <strong>Key Features Implemented:</strong><br>
+          ✅ 8-Stage Procurement Timeline with Real-Time Tracking<br>
+          ✅ Farmer Dashboard with Stats &amp; Charts<br>
+          ✅ Payment Tracking (DBT/PFMS Integration-ready)<br>
+          ✅ Admin Panel — Stage &amp; Payment Update<br>
+          ✅ In-App Notifications (SMS/WhatsApp architecture ready)<br>
+          ✅ Full CRUD — New Procurement Registration<br>
+          ✅ Search &amp; Filter — History &amp; Payment Tables<br>
+          ✅ Role-Based Access (Farmer / Admin)<br>
+          ✅ Responsive Design (Mobile, Tablet, Desktop)<br>
+          ✅ Multi-Farmer Demo Support<br>
+          ✅ Offline Mode with LocalStorage fallback
+        </div>
+        <div class="alert alert-warning" style="margin-top:14px; font-size:0.78rem;">
+          ⚠️ <strong>Demo Note:</strong> All procurement values, payment references, and farmer data are fictional and created for demonstration purposes only. No real financial transactions are represented.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('modal-sih-info')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SCRIPTS (order matters)         -->
+  <!-- =============================== -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/components/farmer-dashboard.js"></script>
+  <script src="js/components/procurement-tracker.js"></script>
+  <script src="js/components/payment-tracker.js"></script>
+  <script src="js/components/history.js"></script>
+  <script src="js/components/notifications.js"></script>
+  <script src="js/components/admin-panel.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

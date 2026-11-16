@@ -1,0 +1,803 @@
+/**
+ * e-Krishi Kisaan Procurement Management System
+ * Initial Seed Data & Configurations
+ */
+
+const SEED_DATA = {
+  farmers: [
+    {
+      id: "FAR-MH-2024-8841",
+      name: "Ramesh Kumar Patel",
+      fatherName: "Harishchandra Patel",
+      phone: "+91 98765 43210",
+      aadhaarMasked: "XXXX-XXXX-4921",
+      kisanCardNo: "KCC-2021-99841",
+      state: "Maharashtra",
+      district: "Sangli",
+      village: "Tasgaon",
+      landSizeAcres: 6.5,
+      primaryCrops: ["Wheat (Sharbati)", "Soybean", "Gram (Chana)"],
+      bankDetails: {
+        bankName: "State Bank of India",
+        accountMasked: "XXXXXXXX4108",
+        ifsc: "SBIN0001248",
+        branch: "Tasgaon Mandi Branch",
+        dbtLinked: true
+      },
+      registrationDate: "2024-01-15T09:00:00Z"
+    },
+    {
+      id: "FAR-PB-2024-1029",
+      name: "Sardar Balvinder Singh Sandhu",
+      fatherName: "Gurmeet Singh Sandhu",
+      phone: "+91 98140 12345",
+      aadhaarMasked: "XXXX-XXXX-7102",
+      kisanCardNo: "KCC-2020-41092",
+      state: "Punjab",
+      district: "Ludhiana",
+      village: "Jagraon",
+      landSizeAcres: 14.0,
+      primaryCrops: ["Basmati Paddy", "Wheat (HD-2967)", "Mustard"],
+      bankDetails: {
+        bankName: "Punjab National Bank",
+        accountMasked: "XXXXXXXX6521",
+        ifsc: "PUNB0182900",
+        branch: "Jagraon Main",
+        dbtLinked: true
+      },
+      registrationDate: "2023-11-20T10:30:00Z"
+    },
+    {
+      id: "FAR-RJ-2024-3401",
+      name: "Sunita Devi Choudhary",
+      fatherName: "Moolchand Choudhary",
+      phone: "+91 94142 87654",
+      aadhaarMasked: "XXXX-XXXX-8834",
+      kisanCardNo: "KCC-2022-77123",
+      state: "Rajasthan",
+      district: "Kota",
+      village: "Ramganj Mandi",
+      landSizeAcres: 8.2,
+      primaryCrops: ["Mustard (Sarson)", "Soybean", "Coriander"],
+      bankDetails: {
+        bankName: "Bank of Baroda",
+        accountMasked: "XXXXXXXX9312",
+        ifsc: "BARB0KOTRAM",
+        branch: "Ramganj Mandi",
+        dbtLinked: true
+      },
+      registrationDate: "2024-02-05T11:15:00Z"
+    }
+  ],
+
+  procurementCentres: [
+    {
+      id: "CTR-APMC-01",
+      name: "Karnal Central APMC Mandi",
+      district: "Karnal",
+      state: "Haryana",
+      incharge: "Dr. S. K. Verma",
+      contact: "+91 184 225 4101"
+    },
+    {
+      id: "CTR-APMC-02",
+      name: "Krishi Upaj Mandi Samiti Kota",
+      district: "Kota",
+      state: "Rajasthan",
+      incharge: "Rajesh Kumar Meena",
+      contact: "+91 744 246 8920"
+    },
+    {
+      id: "CTR-APMC-03",
+      name: "APMC Grain Market Khanna",
+      district: "Ludhiana",
+      state: "Punjab",
+      incharge: "Harbans Lal",
+      contact: "+91 1628 221 044"
+    },
+    {
+      id: "CTR-APMC-04",
+      name: "Krishi Upaj Mandi Indore (Chhavani)",
+      district: "Indore",
+      state: "Madhya Pradesh",
+      incharge: "Manoj Trivedi",
+      contact: "+91 731 251 1089"
+    }
+  ],
+
+  mspRates: [
+    { crop: "Wheat", mspPerQuintal: 2275, season: "Rabi 2024-25" },
+    { crop: "Basmati Paddy", mspPerQuintal: 3100, season: "Kharif 2024-25" },
+    { crop: "Common Paddy", mspPerQuintal: 2300, season: "Kharif 2024-25" },
+    { crop: "Mustard (Sarson)", mspPerQuintal: 5650, season: "Rabi 2024-25" },
+    { crop: "Gram (Chana)", mspPerQuintal: 5440, season: "Rabi 2024-25" },
+    { crop: "Soybean", mspPerQuintal: 4892, season: "Kharif 2024-25" },
+    { crop: "Cotton (Medium Staple)", mspPerQuintal: 7121, season: "Kharif 2024-25" },
+    { crop: "Moong (Green Gram)", mspPerQuintal: 8558, season: "Kharif 2024-25" }
+  ],
+
+  procurements: [
+    {
+      id: "PRC-2024-001",
+      farmerId: "FAR-MH-2024-8841",
+      farmerName: "Ramesh Kumar Patel",
+      cropName: "Wheat",
+      variety: "Sharbati (A-Grade)",
+      estimatedQuantityKg: 4000,
+      actualQuantityKg: 4000,
+      mspPerQuintal: 2275,
+      totalAmount: 91000,
+      procurementCentreId: "CTR-APMC-01",
+      centreName: "Karnal Central APMC Mandi",
+      slotDate: "2024-10-10",
+      slotTime: "09:00 AM - 11:30 AM",
+      weighingDate: "2024-10-10",
+      currentStageIndex: 8,
+      procurementStatus: "Completed",
+      paymentStatus: "Payment Successful",
+      vehicleNumber: "MH-10-AZ-4421",
+      tokenNumber: "TKN-1014",
+      createdAt: "2024-10-06T08:30:00Z",
+      updatedAt: "2024-10-12T14:45:00Z",
+      stages: [
+        {
+          stageId: 1,
+          stageName: "Registration Submitted",
+          status: "Completed",
+          completedAt: "2024-10-06T08:30:00Z",
+          officer: "Self (Online Farmer Portal)",
+          relevantInfo: "Crop: Wheat (Sharbati) | Est. Qty: 40 Quintals (4,000 kg)",
+          remarks: "Application submitted with 7/12 land extract and valid KCC record verified."
+        },
+        {
+          stageId: 2,
+          stageName: "Slot Booking Confirmed",
+          status: "Completed",
+          completedAt: "2024-10-07T11:00:00Z",
+          officer: "APMC Automated Scheduler",
+          relevantInfo: "Gate Pass #GP-8841 | Slot: 10 Oct 2024, 09:00 AM - 11:30 AM",
+          remarks: "Slot allotted at Gate #2, Karnal APMC. Bring original Aadhaar & Bank Passbook."
+        },
+        {
+          stageId: 3,
+          stageName: "Produce Arrived at Procurement Centre",
+          status: "Completed",
+          completedAt: "2024-10-10T09:15:00Z",
+          officer: "Security Officer Balbir",
+          relevantInfo: "Tractor Trolley: MH-10-AZ-4421 | Token #TKN-1014",
+          remarks: "Entry recorded on time. Trolley parked in Yard 4 for lot sampling."
+        },
+        {
+          stageId: 4,
+          stageName: "Quality Inspection",
+          status: "Completed",
+          completedAt: "2024-10-10T10:20:00Z",
+          officer: "Inspector S. K. Verma (Govt Assayer)",
+          relevantInfo: "Grade: Fair Average Quality (FAQ) Grade A | Moisture: 11.2% (Norm <= 12%) | Foreign Matter: 0.4%",
+          remarks: "Excellent grain lustre, clean grain certified for FCI central pool procurement."
+        },
+        {
+          stageId: 5,
+          stageName: "Weighing Completed",
+          status: "Completed",
+          completedAt: "2024-10-10T11:30:00Z",
+          officer: "Weighbridge Incharge Satish",
+          relevantInfo: "Gross: 6,420 kg | Tare (Empty Trolley): 2,420 kg | Net Grain: 4,000 kg (40.00 Qtl)",
+          remarks: "Electronic Weighbridge Slip #WB-44021 issued and counter-signed by farmer."
+        },
+        {
+          stageId: 6,
+          stageName: "Procurement Approved",
+          status: "Completed",
+          completedAt: "2024-10-10T14:00:00Z",
+          officer: "District Procurement Officer Mehra",
+          relevantInfo: "Procurement Certificate #PROC-KR-9912 | 40 Qtl @ ₹2,275/Qtl = ₹91,000",
+          remarks: "All quality and weighing parameters verified. File submitted for DBT disbursement."
+        },
+        {
+          stageId: 7,
+          stageName: "Payment Processing",
+          status: "Completed",
+          completedAt: "2024-10-11T10:15:00Z",
+          officer: "PFMS Nodal Officer Sharma",
+          relevantInfo: "PFMS Batch ID #PFMS-2024-BATCH-890 | Amount: ₹91,000",
+          remarks: "DBT payment file validated and pushed to Reserve Bank of India clearing grid."
+        },
+        {
+          stageId: 8,
+          stageName: "Payment Completed",
+          status: "Completed",
+          completedAt: "2024-10-12T14:45:00Z",
+          officer: "RBI / SBI DBT Gateway",
+          relevantInfo: "UTR: SBI24101298412 | Credited to SBI A/C ending 4108 | ₹91,000",
+          remarks: "Direct Benefit Transfer (DBT) confirmed. Confirmation SMS sent to farmer mobile."
+        }
+      ]
+    },
+    {
+      "id": "PRC-2024-002",
+      "farmerId": "FAR-MH-2024-8841",
+      "farmerName": "Ramesh Kumar Patel",
+      "cropName": "Soybean",
+      "variety": "JS-335 (Yellow)",
+      "estimatedQuantityKg": 3200,
+      "actualQuantityKg": 3200,
+      "mspPerQuintal": 4892,
+      "totalAmount": 156544,
+      "procurementCentreId": "CTR-APMC-04",
+      "centreName": "Krishi Upaj Mandi Indore (Chhavani)",
+      "slotDate": "2024-11-08",
+      "slotTime": "10:00 AM - 12:30 PM",
+      "weighingDate": "2024-11-08",
+      "currentStageIndex": 6,
+      "procurementStatus": "In Progress",
+      "paymentStatus": "Payment Processing",
+      "vehicleNumber": "MH-10-BZ-7190",
+      "tokenNumber": "TKN-2089",
+      "createdAt": "2024-11-03T10:00:00Z",
+      "updatedAt": "2024-11-09T16:20:00Z",
+      "stages": [
+        {
+          stageId: 1,
+          stageName: "Registration Submitted",
+          status: "Completed",
+          completedAt: "2024-11-03T10:00:00Z",
+          officer: "Self (Online Farmer Portal)",
+          relevantInfo: "Crop: Soybean | Est. Qty: 32 Quintals (3,200 kg)",
+          remarks: "Application registered for Rabi/Kharif procurement scheme."
+        },
+        {
+          stageId: 2,
+          stageName: "Slot Booking Confirmed",
+          status: "Completed",
+          completedAt: "2024-11-04T12:00:00Z",
+          officer: "APMC Central Scheduler",
+          relevantInfo: "Gate Pass #GP-9442 | Slot: 08 Nov 2024, 10:00 AM - 12:30 PM",
+          remarks: "Slot scheduled at Platform 3."
+        },
+        {
+          stageId: 3,
+          stageName: "Produce Arrived at Procurement Centre",
+          status: "Completed",
+          completedAt: "2024-11-08T10:10:00Z",
+          officer: "Gate Officer Dilip",
+          relevantInfo: "Vehicle: MH-10-BZ-7190 | Token #TKN-2089",
+          remarks: "Physical produce arrived and verified."
+        },
+        {
+          stageId: 4,
+          stageName: "Quality Inspection",
+          status: "Completed",
+          completedAt: "2024-11-08T11:45:00Z",
+          officer: "Quality Inspector Verma",
+          relevantInfo: "Grade: Grade A | Moisture: 10.4% | Damaged Seeds: 1.1%",
+          remarks: "Quality within procurement limits. Accepted."
+        },
+        {
+          stageId: 5,
+          stageName: "Weighing Completed",
+          status: "Completed",
+          completedAt: "2024-11-08T13:10:00Z",
+          officer: "Weighmaster Suresh",
+          relevantInfo: "Gross: 5,680 kg | Tare: 2,480 kg | Net: 3,200 kg (32.00 Qtl)",
+          remarks: "Weighing slip issued."
+        },
+        {
+          stageId: 6,
+          stageName: "Procurement Approved",
+          status: "Completed",
+          completedAt: "2024-11-09T16:20:00Z",
+          officer: "Mandi Secretary Manoj Trivedi",
+          relevantInfo: "Approved Value: ₹1,56,544 | Scheme: MSP Price Support",
+          remarks: "Sanction order signed. Transferred to Finance."
+        },
+        {
+          stageId: 7,
+          stageName: "Payment Processing",
+          status: "In Progress",
+          completedAt: null,
+          officer: "Finance Department",
+          relevantInfo: "PFMS Mandate generation underway for ₹1,56,544",
+          remarks: "Bank account validation in progress with PFMS portal."
+        },
+        {
+          stageId: 8,
+          stageName: "Payment Completed",
+          status: "Pending",
+          completedAt: null,
+          officer: "DBT Gateway",
+          relevantInfo: "Awaiting final clearance from beneficiary bank.",
+          remarks: "Expected within 24-48 business hours."
+        }
+      ]
+    },
+    {
+      "id": "PRC-2024-003",
+      "farmerId": "FAR-MH-2024-8841",
+      "farmerName": "Ramesh Kumar Patel",
+      "cropName": "Gram (Chana)",
+      "variety": "Desi Chana Bold",
+      "estimatedQuantityKg": 2500,
+      "actualQuantityKg": 2500,
+      "mspPerQuintal": 5440,
+      "totalAmount": 136000,
+      "procurementCentreId": "CTR-APMC-01",
+      "centreName": "Karnal Central APMC Mandi",
+      "slotDate": "2024-11-12",
+      "slotTime": "11:30 AM - 02:00 PM",
+      "weighingDate": null,
+      "currentStageIndex": 2,
+      "procurementStatus": "Pending",
+      "paymentStatus": "Payment Pending",
+      "vehicleNumber": "MH-10-AZ-4421",
+      "tokenNumber": "TKN-3104",
+      "createdAt": "2024-11-09T14:20:00Z",
+      "updatedAt": "2024-11-10T09:00:00Z",
+      "stages": [
+        {
+          stageId: 1,
+          stageName: "Registration Submitted",
+          status: "Completed",
+          completedAt: "2024-11-09T14:20:00Z",
+          officer: "Self (Online Farmer Portal)",
+          relevantInfo: "Crop: Gram (Chana) | Est. Qty: 25 Quintals (2,500 kg)",
+          remarks: "Land records and quota verified."
+        },
+        {
+          stageId: 2,
+          stageName: "Slot Booking Confirmed",
+          status: "Completed",
+          completedAt: "2024-11-10T09:00:00Z",
+          officer: "APMC Automated Scheduler",
+          relevantInfo: "Gate Pass #GP-9812 | Slot: 12 Nov 2024, 11:30 AM - 02:00 PM",
+          remarks: "Report at Gate #1 on 12 Nov 2024 with moisture under 14%."
+        },
+        {
+          stageId: 3,
+          stageName: "Produce Arrived at Procurement Centre",
+          status: "In Progress",
+          completedAt: null,
+          officer: "Security Gate #1",
+          relevantInfo: "Waiting for vehicle arrival on appointed slot day.",
+          remarks: "Please bring original Registration Receipt."
+        },
+        {
+          stageId: 4,
+          stageName: "Quality Inspection",
+          status: "Pending",
+          completedAt: null,
+          officer: "Govt Assayer",
+          relevantInfo: "Pending produce arrival.",
+          remarks: "Will test moisture, foreign matter, and shriveled grains."
+        },
+        {
+          stageId: 5,
+          stageName: "Weighing Completed",
+          status: "Pending",
+          completedAt: null,
+          officer: "Weighbridge Station",
+          relevantInfo: "Pending quality clearance.",
+          remarks: "-"
+        },
+        {
+          stageId: 6,
+          stageName: "Procurement Approved",
+          status: "Pending",
+          completedAt: null,
+          officer: "Procurement Officer",
+          relevantInfo: "Pending weighing.",
+          remarks: "-"
+        },
+        {
+          stageId: 7,
+          stageName: "Payment Processing",
+          status: "Pending",
+          completedAt: null,
+          officer: "Accounts Branch",
+          relevantInfo: "Pending approval.",
+          remarks: "-"
+        },
+        {
+          stageId: 8,
+          stageName: "Payment Completed",
+          status: "Pending",
+          completedAt: null,
+          officer: "DBT Gateway",
+          relevantInfo: "Pending release.",
+          remarks: "-"
+        }
+      ]
+    },
+    {
+      "id": "PRC-2024-004",
+      "farmerId": "FAR-PB-2024-1029",
+      "farmerName": "Sardar Balvinder Singh Sandhu",
+      "cropName": "Basmati Paddy",
+      "variety": "Pusa 1121",
+      "estimatedQuantityKg": 6500,
+      "actualQuantityKg": 6500,
+      "mspPerQuintal": 3100,
+      "totalAmount": 201500,
+      "procurementCentreId": "CTR-APMC-03",
+      "centreName": "APMC Grain Market Khanna",
+      "slotDate": "2024-10-25",
+      "slotTime": "08:30 AM - 11:00 AM",
+      "weighingDate": "2024-10-25",
+      "currentStageIndex": 8,
+      "procurementStatus": "Completed",
+      "paymentStatus": "Payment Successful",
+      "vehicleNumber": "PB-10-DF-9102",
+      "tokenNumber": "TKN-4021",
+      "createdAt": "2024-10-20T07:15:00Z",
+      "updatedAt": "2024-10-28T11:00:00Z",
+      "stages": [
+        {
+          stageId: 1,
+          stageName: "Registration Submitted",
+          status: "Completed",
+          completedAt: "2024-10-20T07:15:00Z",
+          officer: "Farmer Self Portal",
+          relevantInfo: "65 Quintals registered",
+          remarks: "Verified against Punjab Land Revenue database."
+        },
+        {
+          stageId: 2,
+          stageName: "Slot Booking Confirmed",
+          status: "Completed",
+          completedAt: "2024-10-21T09:00:00Z",
+          officer: "Khanna APMC System",
+          relevantInfo: "Slot 25 Oct 2024, Platform 7",
+          remarks: "Slot confirmed."
+        },
+        {
+          stageId: 3,
+          stageName: "Produce Arrived at Procurement Centre",
+          status: "Completed",
+          completedAt: "2024-10-25T08:45:00Z",
+          officer: "Gate Incharge Gurnam",
+          relevantInfo: "Tractor Trolley #PB-10-DF-9102",
+          remarks: "Arrived on schedule."
+        },
+        {
+          stageId: 4,
+          stageName: "Quality Inspection",
+          status: "Completed",
+          completedAt: "2024-10-25T09:40:00Z",
+          officer: "Quality Specialist Gill",
+          relevantInfo: "Moisture: 13.8% (Allowed: <=14%), Grain Length: 8.2mm FAQ Grade Super",
+          remarks: "Premium grain quality confirmed."
+        },
+        {
+          stageId: 5,
+          stageName: "Weighing Completed",
+          status: "Completed",
+          completedAt: "2024-10-25T10:30:00Z",
+          officer: "Weighbridge Khanna",
+          relevantInfo: "Net: 6,500 kg (65 Qtl)",
+          remarks: "Slip #KHN-8812 verified."
+        },
+        {
+          stageId: 6,
+          stageName: "Procurement Approved",
+          status: "Completed",
+          completedAt: "2024-10-25T12:00:00Z",
+          officer: "Secretary Harbans Lal",
+          relevantInfo: "Sanctioned ₹2,01,500",
+          remarks: "Procured under Markfed pool."
+        },
+        {
+          stageId: 7,
+          stageName: "Payment Processing",
+          status: "Completed",
+          completedAt: "2024-10-26T15:20:00Z",
+          officer: "Markfed Finance Cell",
+          relevantInfo: "PFMS Mandate #PFMS-PB-99410",
+          remarks: "Processed for DBT."
+        },
+        {
+          stageId: 8,
+          stageName: "Payment Completed",
+          status: "Completed",
+          completedAt: "2024-10-28T11:00:00Z",
+          officer: "PNB Core Banking / PFMS",
+          relevantInfo: "UTR: PUNB24102899120 | ₹2,01,500 credited to PNB A/C ending 6521",
+          remarks: "100% MSP payment credited successfully."
+        }
+      ]
+    },
+    {
+      "id": "PRC-2024-005",
+      "farmerId": "FAR-RJ-2024-3401",
+      "farmerName": "Sunita Devi Choudhary",
+      "cropName": "Mustard (Sarson)",
+      "variety": "Pusa Bold (High Oil)",
+      "estimatedQuantityKg": 2800,
+      "actualQuantityKg": 2800,
+      "mspPerQuintal": 5650,
+      "totalAmount": 158200,
+      "procurementCentreId": "CTR-APMC-02",
+      "centreName": "Krishi Upaj Mandi Samiti Kota",
+      "slotDate": "2024-11-06",
+      "slotTime": "09:30 AM - 12:00 PM",
+      "weighingDate": "2024-11-06",
+      "currentStageIndex": 7,
+      "procurementStatus": "In Progress",
+      "paymentStatus": "Payment Processing",
+      "vehicleNumber": "RJ-20-EA-4129",
+      "tokenNumber": "TKN-5034",
+      "createdAt": "2024-11-01T11:00:00Z",
+      "updatedAt": "2024-11-07T14:00:00Z",
+      "stages": [
+        {
+          stageId: 1,
+          stageName: "Registration Submitted",
+          status: "Completed",
+          completedAt: "2024-11-01T11:00:00Z",
+          officer: "Farmer Portal",
+          relevantInfo: "28 Quintals Mustard",
+          remarks: "Jan Aadhaar authentication successful."
+        },
+        {
+          stageId: 2,
+          stageName: "Slot Booking Confirmed",
+          status: "Completed",
+          completedAt: "2024-11-02T10:00:00Z",
+          officer: "Kota Mandi Samiti",
+          relevantInfo: "Slot 06 Nov 2024, Platform 1",
+          remarks: "Slot scheduled."
+        },
+        {
+          stageId: 3,
+          stageName: "Produce Arrived at Procurement Centre",
+          status: "Completed",
+          completedAt: "2024-11-06T09:40:00Z",
+          officer: "Gate Staff",
+          relevantInfo: "Vehicle RJ-20-EA-4129",
+          remarks: "Produce received."
+        },
+        {
+          stageId: 4,
+          stageName: "Quality Inspection",
+          status: "Completed",
+          completedAt: "2024-11-06T10:30:00Z",
+          officer: "Oilseeds Chemist Bansal",
+          relevantInfo: "Oil Content: 40.5% | Moisture: 7.2% | FAQ Grade A+",
+          remarks: "Excellent oil content above base threshold."
+        },
+        {
+          stageId: 5,
+          stageName: "Weighing Completed",
+          status: "Completed",
+          completedAt: "2024-11-06T11:15:00Z",
+          officer: "Kota Weighmaster",
+          relevantInfo: "Net Weight: 2,800 kg (28 Qtl)",
+          remarks: "Digital weigh slip generated."
+        },
+        {
+          stageId: 6,
+          stageName: "Procurement Approved",
+          status: "Completed",
+          completedAt: "2024-11-06T13:45:00Z",
+          officer: "Procurement Officer Meena",
+          relevantInfo: "Total: ₹1,58,200 (NAFED Price Support)",
+          remarks: "Sanctioned."
+        },
+        {
+          stageId: 7,
+          stageName: "Payment Processing",
+          status: "In Progress",
+          completedAt: null,
+          officer: "State Nodal Bank",
+          relevantInfo: "PFMS Transaction #PFMS-RJ-88310",
+          remarks: "Awaiting clearing house credit cycle."
+        },
+        {
+          stageId: 8,
+          stageName: "Payment Completed",
+          status: "Pending",
+          completedAt: null,
+          officer: "DBT Gateway",
+          relevantInfo: "Expected credit to Bank of Baroda account.",
+          remarks: "-"
+        }
+      ]
+    }
+  ],
+
+  payments: [
+    {
+      id: "PAY-2024-001",
+      procurementId: "PRC-2024-001",
+      farmerId: "FAR-MH-2024-8841",
+      farmerName: "Ramesh Kumar Patel",
+      cropName: "Wheat (Sharbati)",
+      totalValue: 91000,
+      amountPaid: 91000,
+      pendingAmount: 0,
+      transactionId: "TXN-2024-88941",
+      paymentDate: "2024-10-12T14:45:00Z",
+      paymentMethod: "Direct Benefit Transfer (DBT-PFMS)",
+      bankReferenceNo: "SBI24101298412",
+      beneficiaryAccount: "State Bank of India (A/C: XXXXXXXX4108)",
+      status: "Payment Successful",
+      remarks: "Full payment disbursed under PM-AASHA procurement guidelines."
+    },
+    {
+      id: "PAY-2024-002",
+      procurementId: "PRC-2024-002",
+      farmerId: "FAR-MH-2024-8841",
+      farmerName: "Ramesh Kumar Patel",
+      cropName: "Soybean",
+      totalValue: 156544,
+      amountPaid: 0,
+      pendingAmount: 156544,
+      transactionId: "TXN-2024-91204",
+      paymentDate: null,
+      paymentMethod: "Direct Benefit Transfer (DBT-PFMS)",
+      bankReferenceNo: "PENDING-PFMS-91204",
+      beneficiaryAccount: "State Bank of India (A/C: XXXXXXXX4108)",
+      status: "Payment Processing",
+      remarks: "Batch file uploaded to PFMS portal. Credit expected within 24 hours."
+    },
+    {
+      id: "PAY-2024-003",
+      procurementId: "PRC-2024-003",
+      farmerId: "FAR-MH-2024-8841",
+      farmerName: "Ramesh Kumar Patel",
+      cropName: "Gram (Chana)",
+      totalValue: 136000,
+      amountPaid: 0,
+      pendingAmount: 136000,
+      transactionId: "TXN-2024-92810",
+      paymentDate: null,
+      paymentMethod: "Direct Benefit Transfer (DBT)",
+      bankReferenceNo: "NOT-YET-GENERATED",
+      beneficiaryAccount: "State Bank of India (A/C: XXXXXXXX4108)",
+      status: "Payment Pending",
+      remarks: "Awaiting completion of weighing and approval stages."
+    },
+    {
+      id: "PAY-2024-004",
+      procurementId: "PRC-2024-004",
+      farmerId: "FAR-PB-2024-1029",
+      farmerName: "Sardar Balvinder Singh Sandhu",
+      cropName: "Basmati Paddy",
+      totalValue: 201500,
+      amountPaid: 201500,
+      pendingAmount: 0,
+      transactionId: "TXN-2024-87410",
+      paymentDate: "2024-10-28T11:00:00Z",
+      paymentMethod: "Aadhaar Payment Bridge (APBS)",
+      bankReferenceNo: "PUNB24102899120",
+      beneficiaryAccount: "Punjab National Bank (A/C: XXXXXXXX6521)",
+      status: "Payment Successful",
+      remarks: "Credited via RBI National Automated Clearing House."
+    },
+    {
+      id: "PAY-2024-005",
+      procurementId: "PRC-2024-005",
+      farmerId: "FAR-RJ-2024-3401",
+      farmerName: "Sunita Devi Choudhary",
+      cropName: "Mustard (Sarson)",
+      totalValue: 158200,
+      amountPaid: 0,
+      pendingAmount: 158200,
+      transactionId: "TXN-2024-90412",
+      paymentDate: null,
+      paymentMethod: "Direct Benefit Transfer (DBT)",
+      bankReferenceNo: "BOB241107PEND",
+      beneficiaryAccount: "Bank of Baroda (A/C: XXXXXXXX9312)",
+      status: "Payment Processing",
+      remarks: "Mandate registered with sponsor bank."
+    }
+  ],
+
+  notifications: [
+    {
+      id: "NOTIF-001",
+      farmerId: "FAR-MH-2024-8841",
+      procurementId: "PRC-2024-001",
+      type: "PAYMENT_SUCCESS",
+      title: "Payment Credited Successfully",
+      message: "Dear Ramesh Kumar, payment of ₹91,000 for Wheat (PRC-2024-001) has been credited to your SBI A/C ending 4108. Bank Ref/UTR: SBI24101298412.",
+      channel: "In-App & SMS",
+      isRead: true,
+      createdAt: "2024-10-12T14:46:00Z"
+    },
+    {
+      id: "NOTIF-002",
+      farmerId: "FAR-MH-2024-8841",
+      procurementId: "PRC-2024-002",
+      type: "PAYMENT_INITIATED",
+      title: "Payment Processing Initiated",
+      message: "Payment processing of ₹1,56,544 for Soybean (PRC-2024-002) has been initiated via DBT-PFMS Batch #PFMS-2024-BATCH-890.",
+      channel: "In-App & SMS",
+      isRead: false,
+      createdAt: "2024-11-09T16:25:00Z"
+    },
+    {
+      id: "NOTIF-003",
+      farmerId: "FAR-MH-2024-8841",
+      procurementId: "PRC-2024-002",
+      type: "APPROVED",
+      title: "Procurement Approved",
+      message: "Your Soybean procurement of 3,200 kg at Krishi Upaj Mandi Indore has been officially approved by Secretary Manoj Trivedi.",
+      channel: "In-App",
+      isRead: true,
+      createdAt: "2024-11-09T16:21:00Z"
+    },
+    {
+      id: "NOTIF-004",
+      farmerId: "FAR-MH-2024-8841",
+      procurementId: "PRC-2024-002",
+      type: "WEIGHING",
+      title: "Weighing Completed",
+      message: "Electronic weighing completed for PRC-2024-002. Gross: 5680 kg, Tare: 2480 kg, Net Grain: 3200 kg.",
+      channel: "In-App",
+      isRead: true,
+      createdAt: "2024-11-08T13:12:00Z"
+    },
+    {
+      id: "NOTIF-005",
+      farmerId: "FAR-MH-2024-8841",
+      procurementId: "PRC-2024-002",
+      type: "QUALITY",
+      title: "Quality Inspection Passed",
+      message: "Quality inspection completed by Inspector Verma. Certified Grade A with 10.4% moisture (Passed standard FAQ norms).",
+      channel: "In-App & WhatsApp",
+      isRead: true,
+      createdAt: "2024-11-08T11:46:00Z"
+    },
+    {
+      id: "NOTIF-006",
+      farmerId: "FAR-MH-2024-8841",
+      procurementId: "PRC-2024-002",
+      type: "ARRIVAL",
+      title: "Produce Arrived at Mandi",
+      message: "Vehicle MH-10-BZ-7190 checked in at Indore Mandi. Token #TKN-2089 assigned.",
+      channel: "In-App & SMS",
+      isRead: true,
+      createdAt: "2024-11-08T10:11:00Z"
+    },
+    {
+      id: "NOTIF-007",
+      farmerId: "FAR-MH-2024-8841",
+      procurementId: "PRC-2024-003",
+      type: "SLOT_CONFIRMED",
+      title: "Procurement Slot Confirmed",
+      message: "Slot booked for Gram (Chana) on 12 Nov 2024, 11:30 AM - 02:00 PM at Karnal Central APMC Mandi. Gate Pass #GP-9812.",
+      channel: "In-App & WhatsApp",
+      isRead: false,
+      createdAt: "2024-11-10T09:02:00Z"
+    }
+  ],
+
+  adminUsers: [
+    {
+      id: "ADM-001",
+      name: "Dr. S. K. Verma",
+      role: "Chief Procurement & Quality Assayer",
+      mandi: "Karnal Central APMC Mandi",
+      badge: "APMC-OFFICER-01"
+    },
+    {
+      id: "ADM-002",
+      name: "Anita Sharma",
+      role: "District DBT / PFMS Finance Officer",
+      mandi: "District Agriculture Office",
+      badge: "FINANCE-OFFICER-04"
+    }
+  ]
+};
+
+// Stage definitions
+const STAGES_CONFIG = [
+  { id: 1, name: "Registration Submitted", icon: "clipboard-check", desc: "Farmer registered produce on e-Krishi portal" },
+  { id: 2, name: "Slot Booking Confirmed", icon: "calendar-check", desc: "Mandi procurement date & gate pass allotted" },
+  { id: 3, name: "Produce Arrived at Procurement Centre", icon: "truck", desc: "Vehicle checked in at APMC Mandi entrance" },
+  { id: 4, name: "Quality Inspection", icon: "microscope", desc: "Moisture, purity, FAQ grade lab assay" },
+  { id: 5, name: "Weighing Completed", icon: "scale", desc: "Certified weighbridge gross/tare measurement" },
+  { id: 6, name: "Procurement Approved", icon: "badge-check", desc: "Procurement officer sanction order approved" },
+  { id: 7, name: "Payment Processing", icon: "banknote", desc: "PFMS mandate created & pushed to bank grid" },
+  { id: 8, name: "Payment Completed", icon: "check-circle", desc: "Direct Benefit Transfer credited to bank account" }
+];
